@@ -1,23 +1,20 @@
-import logo from './logo.svg';
+import { useContext, useEffect } from 'react';
+import { Toaster } from 'react-hot-toast';
+import { RouterProvider } from 'react-router-dom';
 import './App.css';
-
+import { AuthContext } from './contexts/AuthProvider';
+import router from './routes/routes';
 function App() {
+
+  const { user, loading } = useContext(AuthContext);
+
+  useEffect(() => {
+  }, [user])
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="App max-w-[1440px] mx-auto">
+      <Toaster />
+      <RouterProvider router={router}></RouterProvider>
     </div>
   );
 }
